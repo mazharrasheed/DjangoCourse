@@ -1,0 +1,21 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+
+.mydiv{
+
+    background-color: rgb(150, 232, 19);
+    width: 200px;
+    height: 200px;
+}
+
+
+img {
+
+ 
+    width: 200px;
+    height: 200px;
+
+}
