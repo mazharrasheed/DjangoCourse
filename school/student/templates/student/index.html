@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+
+
+{% block content %}
+
+<h1>This is studen Page</h1>
+
+<div class="container border col-7 mt-3 pt-3" >
+    <h3>using form only</h3>
+<form action="/student/" method="POST">
+
+{% csrf_token %}
+{{form}}
+
+<input type="submit" value="submit me">
+</form>
+</div>
+
+<div class="container border col-7 mt-3 pt-3">
+<form action="">
+    <h3>using form.as_tabel</h3>
+
+{{form.as_table}}
+
+<input type="submit" value="submit">
+</form>
+</div>
+
+<div class="container border col-7 mt-3 pt-3">
+    <h3>using form.as_p</h3>
+<form action="">
+
+{{form.as_p}}
+
+<input type="submit" value="submit">
+</form>
+</div>
+
+<div class="container border col-7 mt-3 pt-3">
+    <h3>using form.as_ul</h3>
+<form action="">
+{{form.as_ul}}
+<input type="submit" value="submit">
+</form>
+</div>
+
+<div class="container border col-7 mt-3 pt-3">
+    <h3>using for loop </h3>
+<form action="">
+{% for fm in form %}
+
+    {{fm.label_tag}}
+    {{fm}}
+
+{% endfor %}
+<input type="submit" value="submit">
+</form>
+</div>
+
+<div class="container border col-7 mt-3 pt-3">
+    <h3>using for loop with hidden field </h3>
+<form action="">
+{% for fm in form1.visible_fields %}
+    {{fm.label_tag}}
+    {{fm}}
+{% endfor %}
+
+{% for fm in form1.hidden_fields %}
+   
+    {{fm}}
+{% endfor %}
+<input type="submit" value="submit">
+</form>
+</div>
+
+
+<div class="container border col-7 mt-3 pt-3">
+    <h3>using manul method </h3>
+<form action="">
+
+{{form.first_name.label_tag|title}}
+{{form.first_name}}
+{{form.last_name.label|title}}
+
+{{form.last_name}}<br>
+{{form.last_name.value}}<br>
+{{form.last_name.html_name}}<br>
+{{form.first_name.help_text}}<br>
+{{form.last_name.id_for_label}}<br>
+{{form.last_name.field.required}}<br>
+<input type="submit" value="submit">
+
+</form>
+</div>
+
+
+
+{% endblock content %}
