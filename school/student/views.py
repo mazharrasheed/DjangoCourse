@@ -8,7 +8,6 @@ def index(request):
     data={}
     try:
         if request.method=='POST':
-            print(request.POST)
             form=Student(request.POST)
             form1=Student1(request.POST)
             form2=Student2(request.POST)
