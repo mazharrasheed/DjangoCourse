@@ -1,8 +1,19 @@
 from django import forms
 from django.core import validators
+from .models import Student
+
+class Student_Registerform(forms.ModelForm):
+    class Meta:
+        model=Student
+        fields=['username','email','password']
+        labels={'username':"Emter Name",'email':"Enter E-mail",'password':"Enter Password"}
+        help_text={}
+        error_messages={}
+        widgets={'password':forms.PasswordInput,
+                 'username':forms.TextInput(attrs={'class':'myclass','placeholder':'Enter Your Name'}),}
 
 
-class Student(forms.Form):
+class Student0(forms.Form):
 
     first_name=forms.CharField(label= "your name")
     last_name=forms.CharField(disabled=True)

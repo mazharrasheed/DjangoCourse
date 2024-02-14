@@ -2,14 +2,28 @@ from django.shortcuts import redirect, render
 
 from student.forms import Student3, Student4, Student5
 
+from .models import users
+
 
 def index(request):
    data={}
    try:
       if request.method=='POST':
          if request.POST.get("form_type") == 'formOne':
-            print(request.POST.get("form_type"))
+            
             form=Student3(request.POST)
+            form.is_valid()
+            nm=form.cleaned_data['name']
+            em=form.cleaned_data['email']
+            pw=form.cleaned_data['password']
+
+            # reg=users(username=nm,email=em,password=pw) create user
+            # reg=users(id=1,username=nm,email=em,password=pw) update user
+            # reg.save()
+         
+            reg=users(id=1)
+            reg.delete()
+            print("i m here")
             form4=Student4()
             form5=Student5()
          elif request.POST.get("form_type") == 'formTwo':
