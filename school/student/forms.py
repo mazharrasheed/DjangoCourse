@@ -1,4 +1,5 @@
 from django import forms
+from django.core import validators
 
 
 class Student(forms.Form):
@@ -48,23 +49,42 @@ class Student3(forms.Form):
     def clean(self) :
 
         cleaned_data= super().clean()
-
-        nameval=self.cleaned_data['name']
+        nameval=cleaned_data['name']
         if len(nameval)<4:
             raise forms.ValidationError("Name should be more than 4 cheracter")
-
-        eval=self.cleaned_data['email']
+        eval=cleaned_data['email']
         if len(eval)<8 :
             raise forms.ValidationError("Email should be more than 8 cheracter")
-
-        passval=self.cleaned_data['password']
+        passval=cleaned_data['password']
         if len(passval)<8 :
             raise forms.ValidationError("Password should be more than 8 cheracter")
 
 #Builtin Validaters try on course page
 
+def start_with_m(value):
+    if value[0]!="m":
+        raise forms.ValidationError("Name should be starts with 'm'")
+
 class Student4(forms.Form):
 
-    name=forms.CharField(validators=[])
+    name=forms.CharField(validators=[validators.MaxLengthValidator(10),
+    validators.MinLengthValidator(5),start_with_m])
     email=forms.EmailField()
     password=forms.CharField(widget=forms.PasswordInput())
+    re_enter_password=forms.CharField(widget=forms.PasswordInput())
+ 
+    def clean(self) :
+        cleaned_data= super().clean()
+        passval=cleaned_data['password']  # self.clean_data both can work
+        repassval=self.cleaned_data['re_enter_password']  # clean_data both can work
+        if passval!= repassval:
+            raise forms.ValidationError("Enter same password in both fields")
+
+class Student5(forms.Form):
+
+    name=forms.CharField(error_messages={'required':"Enter Your Name "})
+
+    email=forms.EmailField()
+    password=forms.CharField(widget=forms.PasswordInput())
+
+
