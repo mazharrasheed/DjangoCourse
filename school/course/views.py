@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 
-from student.forms import Student3, Student4,Student5
+from student.forms import Student3, Student4, Student5
 
 
 def index(request):

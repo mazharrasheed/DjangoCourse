@@ -7,7 +7,11 @@
 
 <style>
     .errorlist{
-        list-style-type:none;   
+        list-style-type:none;
+        color:red;
+        font-size:12px ;
+        /* margin: 0px; */
+        padding: 0px;
     }
 </style>
     
@@ -39,12 +43,17 @@
 </div>
 
 <div class="container border col-7 mt-3 pt-3" >
-    <h3>using form4</h3>
+    <h3>using form5</h3>
 <form action="/course/" method="POST">
 
 {% csrf_token %}
-{{form5.as_p}}
-<br>
+
+{{form5.non_field_errors}}
+{% for field in form5 %}
+    <div>{{field.label_tag}} {{field}} {{field.errors|striptags}}</div>
+{% endfor %}
+
+
 
 <input type="submit"  value="formThree">
 </form>

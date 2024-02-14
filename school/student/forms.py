@@ -21,7 +21,6 @@ class Student1(forms.Form):
     mobile=forms.IntegerField(disabled=True)
     key=forms.CharField(widget=forms.HiddenInput())
 
-
 # Form with Single field validaion try on student page
 
 class Student2(forms.Form):
@@ -51,13 +50,13 @@ class Student3(forms.Form):
         cleaned_data= super().clean()
         nameval=cleaned_data['name']
         if len(nameval)<4:
-            raise forms.ValidationError("Name should be more than 4 cheracter")
+            raise forms.ValidationError("Alert! Name should be more than 4 cheracter")
         eval=cleaned_data['email']
         if len(eval)<8 :
-            raise forms.ValidationError("Email should be more than 8 cheracter")
+            raise forms.ValidationError("Alert! Email should be more than 8 cheracter")
         passval=cleaned_data['password']
         if len(passval)<8 :
-            raise forms.ValidationError("Password should be more than 8 cheracter")
+            raise forms.ValidationError("Alert! Password should be more than 8 cheracter")
 
 #Builtin Validaters try on course page
 
@@ -80,11 +79,14 @@ class Student4(forms.Form):
         if passval!= repassval:
             raise forms.ValidationError("Enter same password in both fields")
 
+#adding style to error massages. see in course page
 class Student5(forms.Form):
 
-    name=forms.CharField(error_messages={'required':"Enter Your Name "})
-
+    error_css_class="error"
+    requried_css_class="requried"
+  
+    name=forms.CharField(min_length=5)
     email=forms.EmailField()
-    password=forms.CharField(widget=forms.PasswordInput())
+    password=forms.CharField(min_length=8, widget=forms.PasswordInput())
 
-
+    
