@@ -17,7 +17,11 @@
     
 
 <h1>This is course home page</h1>
-
+<ul style="list-style-type:none; text-decoration:none;">
+<li><h3><a style="text-decoration:none;" class= "m-5"  href="/course/0001">Detail course 1</a></h3></li>
+<li><h3><a style="text-decoration:none;" class= "m-5"  href="/course/0002">Detail course 2</a></h3></li>
+<li><h3><a style="text-decoration:none;" class= "m-5"  href="/course/0003">Detail course 3</a></h3></li>
+</ul>
 <div class="container border col-7 mt-3 pt-3" >
     <h3>using form3</h3>
 <form action="/course/" method="POST">
@@ -53,11 +57,11 @@
     <div>{{field.label_tag}} {{field}} {{field.errors|striptags}}</div>
 {% endfor %}
 
-
-
 <input type="submit"  value="formThree">
 </form>
 </div>
+
+
 
 {% endblock content %}
    

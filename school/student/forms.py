@@ -1,6 +1,8 @@
 from django import forms
 from django.core import validators
+
 from .models import Student
+
 
 class Student_Registerform(forms.ModelForm):
     class Meta:
@@ -11,7 +13,6 @@ class Student_Registerform(forms.ModelForm):
         error_messages={}
         widgets={'password':forms.PasswordInput,
                  'username':forms.TextInput(attrs={'class':'myclass','placeholder':'Enter Your Name'}),}
-
 
 class Student0(forms.Form):
 

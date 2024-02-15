@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
-from .forms import Student0, Student1, Student2,Student_Registerform
-from .models import Student 
+from .forms import Student0, Student1, Student2, Student_Registerform
+from .models import Student
 
 # Create your views here.
 
@@ -24,8 +24,6 @@ def index(request):
         print(pw)
         reg=Student(username=nm,email=em,password=pw) #for new object
         reg.save()
-
-
 
         form=Student0(request.POST)
         form1=Student1(request.POST)

@@ -46,3 +46,16 @@ def index(request):
 
    data={'form':form,'form4':form4 ,'form5':form5}
    return render(request,"course/index.html",data)
+
+def show_details(request,cou):
+
+   if cou==1:
+      course=f"({cou}) Primery"
+   if cou==2:
+      course=f"({cou}) Secondary"
+   if cou==3:
+      course=f"({cou}) Metric"
+
+   data={'yr':course}
+
+   return render(request,'course/details.html',data)
