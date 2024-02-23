@@ -1,6 +1,8 @@
 from django import forms
 from django.core import validators
+
 from .models import Student
+
 
 class Student_Registerform(forms.ModelForm):
     class Meta:
@@ -21,7 +23,6 @@ class Teacher_Registrations(Student_Registerform):
         fields=['teachername','email','password']
 
    
-
 
 
 class Student0(forms.Form):
