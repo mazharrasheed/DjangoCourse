@@ -7,12 +7,23 @@ from .models import Student
 class Student_Registerform(forms.ModelForm):
     class Meta:
         model=Student
-        fields=['username','email','password']
-        labels={'username':"Emter Name",'email':"Enter E-mail",'password':"Enter Password"}
+        fields=['username','email','password'] # selecting fields both methods are working.
+        # exclude=['username'] # selecting fields, ignore field username.
+        #fields="__all__"   # selecting fields both methods are working.
+        labels={'username':"Enter Name",'email':"Enter E-mail",'password':"Enter Password",'teachername':'Enter Teacher Name'}
         help_text={}
         error_messages={}
         widgets={'password':forms.PasswordInput,
                  'username':forms.TextInput(attrs={'class':'myclass','placeholder':'Enter Your Name'}),}
+        
+# form Inheritance
+        
+class Teacher_Registrations(Student_Registerform):
+    class Meta(Student_Registerform.Meta):
+        fields=['teachername','email','password']
+
+   
+
 
 class Student0(forms.Form):
 

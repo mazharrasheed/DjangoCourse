@@ -22,5 +22,7 @@ from . import views
 urlpatterns = [
   
     path('',views.index,name="index"),
+    path('teacher/',views.index_teacher,name="index_teacher"),
+   
     
 ]

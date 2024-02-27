@@ -2,18 +2,62 @@
 {% load static %}
 
 
-
-
 {% block content %}
+<style>
+    .success{
+        color: green;
+    }
+    .info{
+        color:blue;
+    } 
+</style> 
+
+{% if form5 %}
+
+<div class="container border col-7 mt-3 pt-3" >
+    <h3>using Teacher_Registerform <br>(ModelForm Inherited from Student_Registration form using student model)</h3>
+<form action="/student/teacher/" method="POST">
+
+{% csrf_token %}
+{{form5.as_p}}
+<br>
+
+<input type="submit" value="submit me">
+</form>
+
+{% if messages %}
+{% for message in messages %}
+<span {% if message.tags %} class="{{message.tags}}"  {% endif %}> {{message}} </span>
+{% endfor %}
+{% endif %}
+</div>
+
+{% else %}
+
+
+
+    
+
 
 <h1>This is studen Page</h1>
 
 <div class="container border col-7 mt-3 pt-3" >
-    <h3>using form4 model form</h3>
+    <h3>using student_Registerform (ModelForm)</h3>
 <form action="/student/" method="POST">
 
 {% csrf_token %}
 {{form4.as_p}}
+<br>
+
+<input type="submit" value="submit me">
+</form>
+</div>
+<div class="container border col-7 mt-3 pt-3" >
+    <h3>using Teacher_Registerform (ModelForm)</h3>
+<form action="/student/" method="POST">
+
+{% csrf_token %}
+{{form5.as_p}}
 <br>
 
 <input type="submit" value="submit me">
@@ -120,6 +164,6 @@
 </form>
 </div>
 
-
+{% endif %}
 
 {% endblock content %}
